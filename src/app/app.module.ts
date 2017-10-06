@@ -1,17 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {RouterModule} from "@angular/router";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
-import {CommonModule} from "@angular/common";
-import {PersonModule} from "./page/Person/person.module";
-import {PersonService} from "./page/Person/person.service";
-import {PersonComponent} from "./page/Person/person.component";
-import {EventEmitterService} from "./services/eventemitter.service";
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {CommonModule} from '@angular/common';
+import {EventEmitterService} from './services/eventemitter.service';
+import {EventService} from './page/event/event.service';
+import {EventModule} from './page/event/event.module';
+import {HomeComponent} from './page/home/home.component';
+import {HomeService} from './page/home/home.service';
+import {CreateEventService} from './page/CreateEvent/create.event.service';
+import {CreateEventModule} from './page/CreateEvent/create.event.module';
+import {UpdateEventModule} from "./page/UpdateEvent/update.event.module";
+import {UpdateEventService} from "./page/UpdateEvent/update.event.service";
 
 @NgModule({
-  declarations: [
+  declarations: [HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +28,11 @@ import {EventEmitterService} from "./services/eventemitter.service";
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}
     ]),
-    PersonModule
+    EventModule,
+    CreateEventModule,
+    UpdateEventModule
   ],
-  providers: [EventEmitterService, PersonService],
-  bootstrap: [PersonComponent]
+  providers: [EventEmitterService, EventService, HomeService, CreateEventService, UpdateEventService ],
+  bootstrap: [HomeComponent]
 })
 export class AppModule { }

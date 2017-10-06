@@ -29,8 +29,6 @@ export class EventEmitterService {
   public getShortLink(link: Link) {
     let url: string = link.href;
     url = url.replace(EventEmitterSettings.SERVER_ADDRESS, '');
-    url = btoa(url);
-    url = encodeURI(url);
     return url;
   }
 

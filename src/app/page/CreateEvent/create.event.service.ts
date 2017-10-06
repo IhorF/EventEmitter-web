@@ -6,7 +6,7 @@ import {EventDTO} from '../../dto/EventDTO/EventDTO';
 
 
 @Injectable()
-export class EventService {
+export class CreateEventService {
 
   constructor(private eventEmitter: EventEmitterService) {
   }

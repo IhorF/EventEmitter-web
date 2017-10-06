@@ -3,7 +3,7 @@ import {PersonService} from "./person.service";
 import {PersonDTO} from "../../dto/PersonDTO/PersonDTO";
 
 @Component({
-  selector: 'app-root',
+  /*selector: 'app-root',*/
   templateUrl: ('./person.component.html'),
   styleUrls: ['./person.css']
 })

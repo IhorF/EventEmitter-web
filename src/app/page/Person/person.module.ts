@@ -11,7 +11,7 @@ import {PersonService} from "./person.service";
     FormsModule,
     CommonModule,
     RouterModule.forChild([
-      {path: 'home', component: PersonComponent}
+      {path: 'person', component: PersonComponent}
     ])],
   exports: [],
   declarations: [PersonComponent],

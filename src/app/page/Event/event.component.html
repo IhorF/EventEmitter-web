@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="events-list">
+    <div class="events-list-item" [ngClass]="{'active': selectedItem == item}"
+         *ngFor="let event of events; let item = index" data-target="modal"
+         (click)="onEventClicked(event); onChangeSelectedItemColor($event, item)">
+      <span>{{event.name}}</span>
+    </div>
+  </div>
+  <div *ngIf="events.length === 0" class="empty-list-label">List</div>
+</div>
+
+<div class="row" *ngIf="event">
+  <div class="col-12">
+    <div class="create-event">
+      <div class="content">
+        <h1 class="category-header alert alert-dark" role="alert">Date</h1>
+        <div class="alert alert-danger" role="alert" >
+          <h5  [disabled]="edit" [(ngModel)]=event.date>{{event.date}}</h5>
+        </div>
+        <h1 class="category-header alert alert-dark" role="alert">Description</h1>
+        <div class="main">
+          <textarea [disabled]="edit" [(ngModel)]=event.description>{{event.description}}</textarea>
+        </div>
+        <button [disabled]="!edit" class="btn btn-primary events-list-button" data-toggle="modal"
+                data-target="#joinToEvent">Join to Eevent
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="getPersonsList()">
+          Will go: {{persons.length}}
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="event event-body" *ngFor="let person of persons" >
+            {{person.name}} {{person.surname}},
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="joinToEvent"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name1" class="form-control-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name1" [(ngModel)]="personName">
+            <label for="recipient-name2" class="form-control-label">Surname:</label>
+            <input type="text" class="form-control" id="recipient-name2" [(ngModel)]="personSurname">
+            <label for="recipient-name" class="form-control-label">Telephon:</label>
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="personTelephon">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="joinToEvent()">Join</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
